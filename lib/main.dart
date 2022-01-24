@@ -1,3 +1,4 @@
+import 'package:flash_cards/home.dart';
 import 'package:flash_cards/screens/flash_card_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: FlashCardScreen());
+    return MaterialApp(home: HomePage());
   }
 }
