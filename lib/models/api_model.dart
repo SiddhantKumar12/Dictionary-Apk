@@ -27,10 +27,10 @@ class DataModel {
 
   factory DataModel.fromJson(Map<String, dynamic> json) => DataModel(
         word: json["word"],
-        phonetic: json["phonetic"],
+        phonetic: json["phonetic"] ?? '',
         phonetics: List<Phonetic>.from(
             json["phonetics"].map((x) => Phonetic.fromJson(x))),
-        origin: json["origin"],
+        origin: json['origin'] == null ? '' : json["origin"],
         meanings: List<Meaning>.from(
             json["meanings"].map((x) => Meaning.fromJson(x))),
       );
@@ -54,7 +54,7 @@ class Meaning {
   List<Definition> definitions;
 
   factory Meaning.fromJson(Map<String, dynamic> json) => Meaning(
-        partOfSpeech: json["partOfSpeech"],
+        partOfSpeech: json["partOfSpeech"] ?? '',
         definitions: List<Definition>.from(
             json["definitions"].map((x) => Definition.fromJson(x))),
       );
@@ -77,7 +77,7 @@ class Definition {
   List<dynamic> antonyms;
 
   factory Definition.fromJson(Map<String, dynamic> json) => Definition(
-        definition: json["definition"],
+        definition: json["definition"] ?? '',
         synonyms: List<dynamic>.from(json["synonyms"].map((x) => x)),
         antonyms: List<dynamic>.from(json["antonyms"].map((x) => x)),
       );
@@ -99,8 +99,8 @@ class Phonetic {
   String audio;
 
   factory Phonetic.fromJson(Map<String, dynamic> json) => Phonetic(
-        text: json["text"],
-        audio: json["audio"],
+        text: json["text"] ?? '',
+        audio: json["audio"] ?? '',
       );
 
   Map<String, dynamic> toJson() => {
