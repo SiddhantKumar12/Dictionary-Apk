@@ -1,35 +1,39 @@
-import 'package:flash_cards/models/api_model.dart';
+import '../models/api_model.dart';
 import 'package:http/http.dart' as http;
 
-import '../const.dart';
-
 class API {
-  static Future<List<DataModel>> getAPI(int index) async {
-    print(index);
-    final url = Uri.parse(
-        'https://api.dictionaryapi.dev/api/v2/entries/en/${words[index]}');
-    var response = await http.get(url);
-    // print(response.statusCode);
-    // print(response.body);
+  List<String>? words;
+  // = ['Apple','grape']
 
-    if (response.statusCode != 200) {
+  API() {
+    getListData();
+    // remove 8-11 line
+  }
+
+  Future<List<DataModel>> getAPI(String word) async {
+    final url = Uri.parse(
+      'https://api.dictionaryapi.dev/api/v2/entries/en/$word',
+    );
+    var response =
+        await http.get(url, headers: {"access-control-allow-origin": "*"});
+
+    if (response.statusCode == 404) {
+      return [];
+    } else if (response.statusCode != 200) {
       throw Exception('error has occurred');
     }
-
     return dataModelFromJson(response.body);
   }
 
-  static Future<void> getListData() async {
+  Future<void> getListData() async {
     final url = Uri.parse(
-        'https://raw.githubusercontent.com/meetDeveloper/freeDictionaryAPI/master/meta/wordList/english.txt');
+      'https://raw.githubusercontent.com/meetDeveloper/freeDictionaryAPI/master/meta/wordList/english.txt',
+    );
     var response = await http.get(url);
-    // print(response.statusCode);
-    // print(response.body);
 
     if (response.statusCode != 200) {
       throw Exception('error has occurred');
     }
-    List<String> sid = [response.body];
-    print(sid);
+    words = response.body.split(' ');
   }
 }

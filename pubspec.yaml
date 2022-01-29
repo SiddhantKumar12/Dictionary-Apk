@@ -36,6 +36,9 @@ dependencies:
   cupertino_icons: ^0.1.2
   flash_card: ^0.0.7
   flip_card: ^0.6.0
+  flutter_tts: ^3.3.3
+
+
 
 
 dev_dependencies:
