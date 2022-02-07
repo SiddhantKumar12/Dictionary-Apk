@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flash_cards/const.dart';
 import 'package:flash_cards/models/api_model.dart';
 import 'package:flash_cards/services/api.dart';
 import 'package:flutter/material.dart';
@@ -99,18 +100,49 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Stack(children: [
                 Container(
                   // height: MediaQuery.of(context).size.height - kToolbarHeight,
-                  height: 400,
-                  width: 300,
+                  height: 500,
+                  width: 410,
                   child: SwipeCards(
                     matchEngine: _matchEngine!,
                     itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        alignment: Alignment.center,
-                        // color: _swipeItems[index].content.color,
-                        color: Colors.white,
-                        child: Text(
-                          _swipeItems[index].content.text,
-                          style: TextStyle(fontSize: 100),
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 60),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.blueAccent)),
+                          alignment: Alignment.center,
+                          // color: _swipeItems[index].content.color,
+                          // color: Colors.orange,
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 15, left: 15),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text(
+                                  data![0].word.toUpperCase(),
+                                  style: TextStyle(fontSize: 30),
+                                ),
+                                Text(
+                                  'Origin : ' + data![0].origin,
+                                  style: TextStyle(fontSize: 20),
+                                ),
+                                Text(
+                                  'Part Of Speech : ' +
+                                      data![0].meanings[0].partOfSpeech,
+                                  style: TextStyle(fontSize: 20),
+                                ),
+                                Text(
+                                  'Definition: ' +
+                                      data![0]
+                                          .meanings[0]
+                                          .definitions[0]
+                                          .definition,
+                                  style: TextStyle(fontSize: 20),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       );
                     },
@@ -127,26 +159,26 @@ class _MyHomePageState extends State<MyHomePage> {
                     fillSpace: true,
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    ElevatedButton(
-                        onPressed: () {
-                          _matchEngine!.currentItem?.nope();
-                        },
-                        child: Text("Nope")),
-                    ElevatedButton(
-                        onPressed: () {
-                          _matchEngine!.currentItem?.superLike();
-                        },
-                        child: Text("Superlike")),
-                    ElevatedButton(
-                        onPressed: () {
-                          _matchEngine!.currentItem?.like();
-                        },
-                        child: Text("Like"))
-                  ],
-                )
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //   children: [
+                //     ElevatedButton(
+                //         onPressed: () {
+                //           _matchEngine!.currentItem?.nope();
+                //         },
+                //         child: Text("Nope")),
+                //     ElevatedButton(
+                //         onPressed: () {
+                //           _matchEngine!.currentItem?.superLike();
+                //         },
+                //         child: Text("Superlike")),
+                //     ElevatedButton(
+                //         onPressed: () {
+                //           _matchEngine!.currentItem?.like();
+                //         },
+                //         child: Text("Like"))
+                //   ],
+                // )
               ])));
   }
 }
