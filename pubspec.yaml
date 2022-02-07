@@ -37,6 +37,7 @@ dependencies:
   flash_card: ^0.0.7
   flip_card: ^0.6.0
   flutter_tts: ^3.3.3
+  swipe_cards: ^1.0.0
 
 
 

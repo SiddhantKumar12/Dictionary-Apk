@@ -5,10 +5,10 @@ class API {
   List<String>? words;
   // = ['Apple','grape']
 
-  API() {
-    getListData();
-    // remove 8-11 line
-  }
+  // API() {
+  //   getListData();
+  //   // remove 8-11 line
+  // }
 
   Future<List<DataModel>> getAPI(String word) async {
     final url = Uri.parse(

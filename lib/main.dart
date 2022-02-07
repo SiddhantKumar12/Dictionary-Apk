@@ -1,5 +1,6 @@
 import 'package:flash_cards/home.dart';
-import 'package:flash_cards/screens/flash_card_screen.dart';
+import 'package:flash_cards/screens/falshcard_view.dart';
+import 'package:flash_cards/screens/swipe_cards.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,6 +18,6 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(primaryColor: Colors.orange),
-        home: HomePage());
+        home: MyHomePage());
   }
 }
