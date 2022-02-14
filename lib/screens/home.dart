@@ -4,9 +4,9 @@ import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
-import 'models/api_model.dart';
-import 'screens/falshcard_view.dart';
-import 'services/api.dart';
+import '../models/api_model.dart';
+import 'falshcard_view.dart';
+import '../services/api.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -41,10 +41,6 @@ class _HomePageState extends State<HomePage> {
     getData();
   }
 
-  // void speakWord() async {
-  //   await flutterTts.speak(data![0].word);
-  // }
-
   @override
   void initState() {
     getData();
@@ -60,14 +56,6 @@ class _HomePageState extends State<HomePage> {
           style: TextStyle(fontSize: 26),
         ),
         centerTitle: true,
-        // actions: [
-        //   IconButton(
-        //       onPressed: () {
-        //         speakWord();
-        //         // print('hi');
-        //       },
-        //       icon: Icon(Icons.audiotrack))
-        // ],
       ),
       body: SafeArea(
         child: isLoading
@@ -121,9 +109,6 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                           ),
-                          // FlashcardView(
-                          //   word: results.meanings[index]
-                          //       .definitions[index].definition,
                         ),
                       ),
                     ),
@@ -143,29 +128,6 @@ class _HomePageState extends State<HomePage> {
                         style: TextStyle(color: Colors.white, fontSize: 18),
                       ),
                     ),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    //   children: [
-                    //     OutlineButton.icon(
-                    //         borderSide: BorderSide(
-                    //           color: Colors.white,
-                    //           style: BorderStyle.solid,
-                    //           width: 2,
-                    //         ),
-                    //         onPressed: pickRandomWord,
-                    //         icon: Icon(Icons.chevron_left),
-                    //         label: Text('Prev')),
-                    //     OutlineButton.icon(
-                    //         borderSide: BorderSide(
-                    //           color: Colors.white,
-                    //           style: BorderStyle.solid,
-                    //           width: 2,
-                    //         ),
-                    //         onPressed: pickRandomWord,
-                    //         icon: Icon(Icons.chevron_right),
-                    //         label: Text('Next')),
-                    //   ],
-                    // )
                   ],
                 ),
               ),
@@ -173,18 +135,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-// void showNextCard() {
-//   setState(() {
-//     _currentIndex =
-//     (_currentIndex + 1 < _flashcards.length) ? _currentIndex + 1 : 0;
-//   });
-// }
-//
-// void showPreviousCard() {
-//   setState(() {
-//     _currentIndex =
-//     (_currentIndex - 1 >= 0) ? _currentIndex - 1 : _flashcards.length - 1;
-//   });
-// }
-// }

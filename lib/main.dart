@@ -1,4 +1,4 @@
-import 'package:flash_cards/home.dart';
+import 'package:flash_cards/screens/home.dart';
 import 'package:flash_cards/screens/falshcard_view.dart';
 import 'package:flash_cards/screens/swipe_cards.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +18,6 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(primaryColor: Colors.orange),
-        home: MyHomePage());
+        home: HomePage());
   }
 }
